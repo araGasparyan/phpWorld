@@ -9,9 +9,16 @@ and open the template in the editor.
 */
 
 header h1 {
+    width: 80%;
    text-align: center; 
    font-size: 40px;
    border: red 1px solid;
 }
 
+header img {
+   border: red 1px solid;
+}
 
+.myclass{
+    border: 1px solid black;
+}

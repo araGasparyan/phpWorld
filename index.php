@@ -13,15 +13,18 @@ and open the template in the editor.
     <body>
         <header>
             <h1>Hello world!!!</h1>
+            <a><img width="100px" style="float: right" src="pictures/earth.gif"></a>
         </header>
         <section>
             <form>
                 <input type="submit" name="mySendButton" value="submit">
             </form>
+            
         </section>
         
         <?php
-        // put your code here
+        require 'C:\xampp\htdocs\world\controller\Control.php';
+        echo Control::test();
         ?>
     </body>
 </html>
