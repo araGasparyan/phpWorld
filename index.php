@@ -6,25 +6,30 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>My first PHP Hello World))</title>
-        <link rel="stylesheet" href="CSS/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Calm breeze login screen</title>
+    <link rel="stylesheet" href="css/LoginFormstyle.css">
     </head>
     <body>
-        <header>
-            <h1>Hello world!!!</h1>
-            <a><img width="100px" style="float: right" src="pictures/earth.gif"></a>
-        </header>
-        <section>
-            <form>
-                <input type="submit" name="mySendButton" value="submit">
-            </form>
-            
-        </section>
-        
         <?php
+        if(!(empty($_POST['userName'])||empty($_POST['password']))){
         require 'C:\xampp\htdocs\world\controller\Control.php';
-        echo Control::test();
+        Control::test($_POST["userName"], $_POST["password"]);
+        }
+          ?>
+    <div class="wrapper">
+	<div class="container">
+		<h1>Welcome</h1>
+                <form class="form" method="post" action="?">
+                    <input type="text" placeholder="Name" name="userName">
+                    <input type="password" placeholder="password" name="password">
+                    <button type="submit" id="login-button">Login</button>
+		</form>
+	</div>
+    </div>
+        <?php
+          
         ?>
+      
     </body>
 </html>

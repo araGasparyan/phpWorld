@@ -59,18 +59,38 @@ class ConnectDB {
     }
     
     
+    function getCouyntriesByPop($lower){
+        $this->sql="SELECT `country`.`Name`, `country`.`Population` FROM country WHERE `country`.`Population`>='".$lower."';";
+        $this->result=$this->con->query($this->sql);
+        $this->con->close();
+        return $this->result;
+    }
+
     function getCitiesOfTheCountry($countryName){
         $this->sql="SELECT ID, `country`.`Name`, CountryCode, District, `country`.`Population`  FROM city,country WHERE city.CountryCode=country.Code AND `country`.`Name`='".$countryName."';";
         $this->result=$this->con->query($this->sql);
         $this->con->close();
         return $this->result;
     }
-
-
-
+    
+    function checkLogin($login,$password,$pages){
+        $this->sql="SELECT * FROM users where login='".$login."' AND password='".$password."';";
+        $this->result=$this->con->query($this->sql);
+        $this->con->close();
+        if ($this->result->num_rows > 0){
+            return $pages[1];
+        }
+        else {
+            return $pages[0];
+        } 
+    }
+    
+    /*
+    
+	JAVA PART
 
 //$result = $conn->query($sql);
-    
+    */
     
     
     
