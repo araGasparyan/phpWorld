@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="content-type" content="text/html" charset="utf-8" />
         <title>My first PHP Hello World))</title>
         <link rel="stylesheet" href="../CSS/style.css">
     </head>

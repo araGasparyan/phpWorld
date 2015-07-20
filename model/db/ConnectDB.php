@@ -52,6 +52,9 @@ class ConnectDB {
         $this->password = $password;
         $this->database = $database;
         $this->con = new mysqli($ip, $user, $password, $database);
+        mysqli_query($this->con,"SET NAMES 'utf8'");
+        mysqli_query($this->con,"SET CHARACTER SET utf8");
+        mysqli_query($this->con,"SET COLLATION_CONNECTION = 'utf8_unicode_ci'");
         if ($this->con->connect_error) {
             die("Connection failed: " . $this->con->connect_error);
         }
