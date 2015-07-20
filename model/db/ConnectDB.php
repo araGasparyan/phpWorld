@@ -70,7 +70,7 @@ class ConnectDB {
     }
 
     function getCitiesOfTheCountry($countryName){
-        $this->sql="SELECT ID, `country`.`Name`, CountryCode, District, `country`.`Population`  FROM city,country WHERE city.CountryCode=country.Code AND `country`.`Name`='".$countryName."';";
+        $this->sql="SELECT `city`.`Name`, District, `city`.`Population`  FROM city,country WHERE city.CountryCode=country.Code AND `country`.`Name`='".$countryName."' order by `city`.`Name`;";
         $this->result=$this->con->query($this->sql);
         $this->con->close();
         return $this->result;
@@ -87,6 +87,16 @@ class ConnectDB {
             return $pages[0];
         } 
     }
+    
+    function getCountryInfo($countryName){
+        $this->sql="SELECT `Continent`, `Region`, `SurfaceArea`, `IndepYear`, `country`.`Population`, `LifeExpectancy`, `LocalName`, `GovernmentForm`, `HeadOfState`, city.`Name` AS capital"
+                   . "  FROM `world`.`country`, world.`city` "
+                   . " WHERE city.`CountryCode`=`country`.`Code` AND city.`ID` = `country`.`Capital` AND `country`.`Name` = '".$countryName."';";
+        $this->result=$this->con->query($this->sql);
+        $this->con->close();
+        return $this->result;
+    }
+   
     
     /*
     

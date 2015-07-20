@@ -7,6 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+        <link rel="stylesheet" href="../CSS/style.css">
         <title></title>
     </head>
     <body>

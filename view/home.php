@@ -20,17 +20,25 @@ and open the template in the editor.
             </div>
         </header>
         <section>
-            <form method="get" action="cities.php">
-                <input type="text" placeholder="Enter country name" name="country">
-                <input type="submit" name="mySendButton1" value="submit">
-            </form>
             
             <form method="get" action="populations.php">
                 <input type="text" placeholder="Enter population lower bound" name="lower">
                 <input type="submit" name="mySendButton2" value="submit">
             </form>
             
+            <form method="get" action="countryInfo.php">
+                <input type="text" placeholder="Enter country name" name="country">
+                <input type="submit" name="mySendButton3" value="submit">
+            </form>
         </section>
+         
+        <div id="clock">
+            <img src="../pictures/clock.jpg">
+            <canvas id="myCanvas2" width="212" height="212"></canvas>
+            <canvas id="myCanvas3" width="212" height="212"></canvas>
+            <canvas id="myCanvas4" width="212" height="212"></canvas>
+        </div>
+        <script src="../js/newjavascript.js"></script>
         
         <?php
         
