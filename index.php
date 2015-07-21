@@ -8,12 +8,12 @@ and open the template in the editor.
     <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8" />
     <title>Calm breeze login screen</title>
-    <link rel="stylesheet" href="css/LoginFormstyle.css">
+    <link rel="stylesheet" href="CSS/LoginFormstyle.css">
     </head>
     <body>
         <?php
         if(!(empty($_POST['userName'])||empty($_POST['password']))){
-        require 'C:\xampp\htdocs\world\controller\Control.php';
+        require $_SERVER['DOCUMENT_ROOT'].'\world\controller\Control.php';
         Control::test($_POST["userName"], $_POST["password"]);
         }
           ?>
@@ -25,10 +25,11 @@ and open the template in the editor.
                     <input type="password" placeholder="password" name="password">
                     <button type="submit" id="login-button">Login</button>
 		</form>
+                
 	</div>
     </div>
         <?php
-          
+         
         ?>
       
     </body>

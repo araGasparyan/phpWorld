@@ -68,6 +68,13 @@ class ConnectDB {
         $this->con->close();
         return $this->result;
     }
+    
+    function getLanguages($country){
+        $this->sql="Select `Language`, `IsOfficial`, `Percentage` FROM countrylanguage, country WHERE countrylanguage.CountryCode=country.Code AND `country`.`Name`='".$country."';";
+        $this->result=$this->con->query($this->sql);
+        $this->con->close();
+        return $this->result;
+    }
 
     function getCitiesOfTheCountry($countryName){
         $this->sql="SELECT `city`.`Name`, District, `city`.`Population`  FROM city,country WHERE city.CountryCode=country.Code AND `country`.`Name`='".$countryName."' order by `city`.`Name`;";

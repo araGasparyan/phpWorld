@@ -11,13 +11,13 @@
  *
  * @author Ara
  */
-require 'C:\xampp\htdocs\world\model\validation\FindCSSClass.php';
-
+require $_SERVER['DOCUMENT_ROOT'].'\world\model\validation\FindCSSClass.php';
+require $_SERVER['DOCUMENT_ROOT'].'\world\model\formatter\Cities.php';
 class generateHTML {
     private static $output;
 
     //The static function formate result as a table
-    static function generateTable($result, $classname, $additionalTd){
+    static function generateTable($result, $classname, $obj){
     $output="";    
     if ($result->num_rows > 0) {
         $output.="<table class=".$classname.">";
@@ -34,28 +34,18 @@ class generateHTML {
         printf($val->type);
         */
         }
-        if($additionalTd!=0){
-            for($i=0;$i<$additionalTd;$i++){
-                $output.="<td>".'Icon'."</td>";
-            }
+        if($obj!=null){
+        $output.=$obj->addHeaderTd($obj->getTdCount());
         }
-        $output.="</tr>"; 
+        $output.="</tr>";
         while($row = $result->fetch_assoc()) {
         $output.="<tr>";
         foreach ($columns as $val) {
         $output.="<td>".$row[$val->name]."</td>";
         }
-        if($additionalTd!=0){
-            for($i=0;$i<$additionalTd;$i++){
-                if($row['Population']<=100000)
-                $output.="<td class=town></td>";
-                else if(100000<$row['Population']&&$row['Population']<=1000000){
-                    $output.="<td class=city></td>";
-                }else{
-                   $output.="<td class=bigCity></td>";
-                }
-                
-            }
+        if($obj!=null){
+        $obj->setRow($row);
+        $output.=$obj->addTd($obj->getTdCount());
         }
         $output.="</tr>"; 
         }

@@ -20,10 +20,10 @@ and open the template in the editor.
             </div>
         </header>
         <?php
-        require 'C:\xampp\htdocs\world\controller\Control.php';
+        require $_SERVER['DOCUMENT_ROOT'].'\world\controller\Control.php';
         echo Control::CountryInfo($_GET['country']);
         echo Control::findCitiesOf($_GET['country']);
-   
+        echo Control::LanguagesOf($_GET['country']);
         ?>
     </body>
 </html>
