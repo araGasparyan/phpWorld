@@ -11,8 +11,8 @@
  *
  * @author Ara
  */
-require $_SERVER['DOCUMENT_ROOT'].'\world\model\validation\FindCSSClass.php';
-require $_SERVER['DOCUMENT_ROOT'].'\world\model\formatter\Cities.php';
+require $_SERVER['DOCUMENT_ROOT'].'/world/model/validation/FindCSSClass.php';
+require $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/Cities.php';
 class generateHTML {
     private static $output;
 
