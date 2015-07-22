@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'].'\world\model\formatter\AdditionalTd.php';
+require $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/AdditionalTd.php';
 
 
 class Cities implements AdditionalTd {
@@ -33,13 +33,13 @@ class Cities implements AdditionalTd {
         $output="";
         for($i=0;$i<$tdCount;$i++){
             if($this->row['Population']<=100000){
-                $output.="<td class=town></td>";
+                $output.="<td class='town'></td>";
             }
             else if(100000<$this->row['Population']&&$this->row['Population']<=1000000){
-                $output.="<td class=city></td>";
+                $output.="<td class='city'></td>";
             }
             else{
-                $output.="<td class=bigCity></td>";
+                $output.="<td class='bigCity'></td>";
             }
         }
         return $output;

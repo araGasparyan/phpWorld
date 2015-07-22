@@ -12,7 +12,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        require $_SERVER['DOCUMENT_ROOT'].'\world\controller\Control.php';
+        require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
         echo Control::findCountriesByPop($_GET['lower']);
         ?>
     </body>

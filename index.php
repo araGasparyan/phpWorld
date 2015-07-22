@@ -13,7 +13,7 @@ and open the template in the editor.
     <body>
         <?php
         if(!(empty($_POST['userName'])||empty($_POST['password']))){
-        require $_SERVER['DOCUMENT_ROOT'].'\world\controller\Control.php';
+        require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
         Control::test($_POST["userName"], $_POST["password"]);
         }
           ?>

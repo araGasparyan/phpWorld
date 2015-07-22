@@ -70,7 +70,7 @@ class ConnectDB {
     }
     
     function getLanguages($country){
-        $this->sql="Select `Language`, `IsOfficial`, `Percentage` FROM countrylanguage, country WHERE countrylanguage.CountryCode=country.Code AND `country`.`Name`='".$country."';";
+        $this->sql="Select `Language`, `IsOfficial`, `Percentage` FROM countrylanguage, country WHERE countrylanguage.CountryCode=country.Code AND `country`.`Name`='".$country."' order by `Percentage` DESC;";
         $this->result=$this->con->query($this->sql);
         $this->con->close();
         return $this->result;

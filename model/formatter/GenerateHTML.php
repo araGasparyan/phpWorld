@@ -58,8 +58,8 @@ class generateHTML {
     
     
     static function generateCountryInfoHTML($result, $classnames){
-    $output="";
-    $theContinentClass=new FindCSSClass();
+    //$output=array();
+    //$theContinentClass=new FindCSSClass();
     $pictureNames=array(
         'Africa'=>'Africa.png',
         'Antarctica'=>'Antarctica.png',
@@ -71,22 +71,13 @@ class generateHTML {
     );
     if ($result->num_rows > 0) {
         $columns=$result->fetch_fields();
-        $output.="<div class=countryInfo>";
+        //This part should ve replaced in Saqo's html
         while($row = $result->fetch_assoc()) {
             foreach ($columns as $val) {
-                if($val->name=='Continent'){
-                    $output.="<div class=".$classnames[$val->name].">";
-                    //<img src="smiley.gif" alt="Smiley face" height="42" width="42"> 
-                    $output.="<img src='../pictures/continents/".$pictureNames[$row[$val->name]]."' >";
-                    //$output.='sdadasd';
-                }else{
-                    $output.="<div class=".$classnames[$val->name].">";
-                }
-            $output.=$row[$val->name];
-            $output.="</div>"; 
+                $output[$val->name]=$row[$val->name];
+                $output['continentPicture']=$pictureNames[$row['Continent']];
             }
         }
-        $output.="</div>";
     } else {
     return "0 results";
     }

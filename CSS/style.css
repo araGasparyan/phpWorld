@@ -38,7 +38,7 @@ footer, header, hgroup, menu, nav, section {
 
 
 body {
-    line-height: 1.5;
+    line-height: 1;
     background: white;
 }
 
@@ -50,7 +50,6 @@ table {
 
 caption, th, td {
     text-align: left;
-    font-weight: normal;
     float:none !important;
 }
 table, th, td {
@@ -73,10 +72,13 @@ header div{
 }
 
 header h1 {
+  text-transform: uppercase;
+  font-family: arial;
   text-align: center;
   margin: 0 auto;
   font-size: 63px;
   width: 100%;
+  line-height: 1.5;
 }
 
 header img {
@@ -88,32 +90,24 @@ a {
 }
 
 .hello {
-    width: 85%;
+    width: 92%;
     background-image: url(../pictures/headerback.png);
 }
 
 .earth {
-    width: 14%;
+    width: 6%;
     vertical-align: top;
 }
 .myclass{
     border: 1px solid black;
 }
 
-tr:first-child {
-    background-color: yellow;
-    color: red;
-}
 
 .continent{
     
 }
 
 .region{
-    
-}
-
-.surfaceArea{
     
 }
 
@@ -135,6 +129,11 @@ tr:first-child {
 
 .governmentForm{
     
+}
+
+.surfaceArea::before{
+    content: url(../pictures/smiley.png);
+    margin-right: 5px;    
 }
 
 .headOfState{
@@ -161,38 +160,106 @@ tr:first-child {
 }
 
 .countryInfo{
-    border: 2px solid red;
-}
-
-
-.countryInfo div{
-    border: 1px dotted blue;
+   
 }
 
 .town {
    background-image: url(../pictures/cities/town.png);
    width: 50px;
    height: 50px;
+   background-repeat: no-repeat;
 }
 
 .city {
    background-image: url(../pictures/cities/city.png);  
    width: 50px;
    height: 50px;
+   background-repeat: no-repeat;
 }
 
 .bigCity {
    background-image: url(../pictures/cities/bigCity.png);  
    width: 50px;
    height: 50px;
+   background-repeat: no-repeat;
 }
 
+.continentInfo {
+    float:left;
+    position: relative;
+}
+            
+.addInfo {
+    float:left;
+    margin-left:25px;
+    width: 75%;
+    height: 410px;
+    background-color: #F0F0F5;
+}
 
+.addInfo div+div{
+    border-top:1px solid ;
+}
 
+.mainInfo {
+    margin-top: 15px;
+}
+            
+.mainInfo div+div{
+    border-top:1px solid black;
+}
 
+.info {
+    background-color: #F0F0F5;
+    padding: 7px 10px;
+}
 
+.clearfix:after { 
+    content: "."; 
+    visibility: hidden; 
+    display: block; 
+    height: 0; 
+    clear: both;
+}
 
+.cityLanguage {
+    clear: both;
+    padding: 25px 0;
+}
 
+.datas {
+                float: left;
+                width: 46.4%;
+                height: 300px;
+                padding: 15px;
+                background-color: #F0F0F5;
+                overflow-y: scroll;
+}
 
+.datas td {
+                padding: 7px;
+}
+            
+ tr:first-child {
+     text-transform: uppercase;
+     font-weight: bold !important;
+}
+            
+.languages {
+                margin-left: 25px;
+}
 
+.geoText {
+    font-family: arial;
+    text-indent: 50px;
+    line-height: 1.5;
+    padding: 0 15px;
+    text-align: justify;
+    width: 92%;
+}
 
+.countryInfoField{
+    padding-left: 15px;
+    padding-top: 50px;
+  
+}
