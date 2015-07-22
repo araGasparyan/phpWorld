@@ -1,21 +1,21 @@
 <?php
-//this is just temprorary declaration
  require $_SERVER['DOCUMENT_ROOT'].'/world/model/db/ConnectDB.php';
  require $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/GenerateHTML.php';
  require $_SERVER['DOCUMENT_ROOT'].'/world/controller/ProjectGlobals.php';
 
- 
-//This class contols 
+//This class is a container of methods which are called from view folders
 class Control {
+    
+//The method returns table of the cities of the $country
 static function findCitiesOf($country){
     $cities=new Cities(1);
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $result=$con->getCitiesOfTheCountry($country);
-    //echo '<>'
     $output=GenerateHTML::generateTable($result, 'cityClass',$cities);
     return $output;
 }
-    
+
+//The method authorize the user
 static function test($login,$password){
     $pages=array('?','view/home.php');
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
@@ -25,6 +25,7 @@ static function test($login,$password){
     }
 }
 
+//Is not used yet
 static function findCountriesByPop($lower){
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $result=$con->getCouyntriesByPop($lower);
@@ -32,31 +33,19 @@ static function findCountriesByPop($lower){
     return $output;
 } 
 
+//The method returns an associative array which include info about $country
 static function CountryInfo($country){
-    $classes=array(
-        'Continent'=>'continent',
-        'Region'=>'region',
-        'SurfaceArea'=>'surfaceArea',
-        'IndepYear'=>'indepYear',
-        'capital'=>'capital',
-        'HeadOfState'=>'headOfState',
-        'GovernmentForm'=>'governmentForm',
-        'LocalName'=>'localName',
-        'LifeExpectancy'=>'lifeExpectancy',
-        'Population'=>'population'
-                );
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $result=$con->getCountryInfo($country);
-     //$output=GenerateHTML::generateTable($result, 'CountriesByPop');
-    $output=GenerateHTML::generateCountryInfoHTML($result,$classes);
+    $output=GenerateHTML::generateCountryInfoHTML($result);
     return $output;
 }
 
+//The method returns table of the languages of the $country
 static function LanguagesOf($country){
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $result=$con->getLanguages($country);
-     //$output=GenerateHTML::generateTable($result, 'CountriesByPop');
-    $output=GenerateHTML::generateTable($result, 'languageClass',null);
+    $output=GenerateHTML::generateTable($result,'languageClass',null);
     return $output;
 }
    

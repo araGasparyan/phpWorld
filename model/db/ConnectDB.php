@@ -1,23 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of ConnectDB
- *
- * @author Ara
- */
+//The objects of the class are used for connecting to the mysql database, and for queris
 class ConnectDB {
-   
+    //The following variables incapsulates connection parametrs to a database
     private $ip=""; 
     private $user="";
     private $password="";
     private $database="";
     private $con="";
+    //The variables incapsulates queris and results of the database
     private $sql="";
     private $result;
     
@@ -45,7 +36,6 @@ class ConnectDB {
         $this->con = $con;
     }
 
-                
     function __construct($ip, $user, $password, $database) {
         $this->ip = $ip;
         $this->user = $user;
@@ -61,7 +51,7 @@ class ConnectDB {
                
     }
     
-    
+    //The method returns mysql query-result of the countries which have greather population than $lower
     function getCouyntriesByPop($lower){
         $this->sql="SELECT `country`.`Name`, `country`.`Population` FROM country WHERE `country`.`Population`>='".$lower."';";
         $this->result=$this->con->query($this->sql);
@@ -69,6 +59,7 @@ class ConnectDB {
         return $this->result;
     }
     
+     //The method returns mysql query-result of the languages of the $country
     function getLanguages($country){
         $this->sql="Select `Language`, `IsOfficial`, `Percentage` FROM countrylanguage, country WHERE countrylanguage.CountryCode=country.Code AND `country`.`Name`='".$country."' order by `Percentage` DESC;";
         $this->result=$this->con->query($this->sql);
@@ -76,13 +67,15 @@ class ConnectDB {
         return $this->result;
     }
 
-    function getCitiesOfTheCountry($countryName){
-        $this->sql="SELECT `city`.`Name`, District, `city`.`Population`  FROM city,country WHERE city.CountryCode=country.Code AND `country`.`Name`='".$countryName."' order by `city`.`Name`;";
+    //The method returns mysql query-result of the cities of the $country
+    function getCitiesOfTheCountry($country){
+        $this->sql="SELECT `city`.`Name`, District, `city`.`Population`  FROM city,country WHERE city.CountryCode=country.Code AND `country`.`Name`='".$country."' order by `city`.`Name`;";
         $this->result=$this->con->query($this->sql);
         $this->con->close();
         return $this->result;
     }
     
+    //The method checks login and password of the user
     function checkLogin($login,$password,$pages){
         $this->sql="SELECT * FROM users where login='".$login."' AND password='".$password."';";
         $this->result=$this->con->query($this->sql);
@@ -95,6 +88,7 @@ class ConnectDB {
         } 
     }
     
+    //The method returns mysql query-result of the attributes of the $country
     function getCountryInfo($countryName){
         $this->sql="SELECT `Continent`, `Region`, `SurfaceArea`, `IndepYear`, `country`.`Population`, `LifeExpectancy`, `LocalName`, `GovernmentForm`, `HeadOfState`, city.`Name` AS capital"
                    . "  FROM `world`.`country`, world.`city` "
@@ -104,16 +98,4 @@ class ConnectDB {
         return $this->result;
     }
    
-    
-    /*
-    
-	JAVA PART
-
-//$result = $conn->query($sql);
-    */
-    
-    
-    
-    
-    
 }

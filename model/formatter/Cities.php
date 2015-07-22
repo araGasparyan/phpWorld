@@ -1,10 +1,12 @@
 <?php
-
 require $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/AdditionalTd.php';
 
-
+//The objects of this class are used generating additional icon td-s, in the city representation table of the given country
 class Cities implements AdditionalTd {
+    //The variable incapsulates coloumn count, which should be add to a given table
     private $tdCount;
+    
+    //The variable incapsulates data from which the data should be taken in order to add in the corresponding td
     private $row;
     
     public function setRow($row) {
@@ -18,7 +20,8 @@ class Cities implements AdditionalTd {
     function __construct($tdCount) {
         $this->tdCount = $tdCount;
     }
-
+    
+    //The method indicates how to add header of the corresponding coloumn
     public function addHeaderTd($tdCount) {
         $tdCount= $this->tdCount;
         $output="";
@@ -27,7 +30,8 @@ class Cities implements AdditionalTd {
         }
         return $output;
     }
-
+    
+    //The method indicates how to add td-s of the corresponding coloumn 
     public function addTd($tdCount) {
         $tdCount= $this->tdCount;
         $output="";
