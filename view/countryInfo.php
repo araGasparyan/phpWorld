@@ -22,6 +22,9 @@ and open the template in the editor.
         <?php 
         require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
         $output=Control::CountryInfo($_GET['country']);
+        if($output=='0 results'){
+            echo header("Location: home.php ");
+        };
         ?>
         <div class="countryInfo clearfix">
             <!--the class name should be changed-->

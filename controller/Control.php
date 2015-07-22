@@ -16,7 +16,7 @@ static function findCitiesOf($country){
 }
 
 //The method authorize the user
-static function test($login,$password){
+static function authorization($login,$password){
     $pages=array('?','view/home.php');
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $loc=$con->checkLogin($_POST["userName"], $_POST["password"], $pages);

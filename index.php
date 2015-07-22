@@ -14,7 +14,7 @@ and open the template in the editor.
         <?php
         if(!(empty($_POST['userName'])||empty($_POST['password']))){
         require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
-        Control::test($_POST["userName"], $_POST["password"]);
+        Control::authorization($_POST["userName"], $_POST["password"]);
         }
           ?>
     <div class="wrapper">

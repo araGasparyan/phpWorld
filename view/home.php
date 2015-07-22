@@ -47,6 +47,9 @@ and open the template in the editor.
                 <input type="text" placeholder="Enter country name" name="country">
                 <input type="submit" name="mySendButton3" value="submit">
             </form>
+            <?php
+        
+            ?>
         </section>
          <br>
          <br>
@@ -60,8 +63,5 @@ and open the template in the editor.
         </div>
         <script src="../js/newjavascript.js"></script>
         
-        <?php
-        
-        ?>
     </body>
 </html>
