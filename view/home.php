@@ -4,6 +4,14 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php 
+session_start();
+
+  if(empty($_SESSION['userName'])){
+      header("Location: ../index.php");
+      echo $_SERVER['userName'];
+  }
+?>
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
@@ -45,7 +53,7 @@ and open the template in the editor.
             
             <form class="countryInfoField" method="get" action="countryInfo.php">
                 <input type="text" placeholder="Enter country name" name="country">
-                <input type="submit" name="mySendButton3" value="submit">
+                <input type="submit" value="submit">
             </form>
             <?php
         

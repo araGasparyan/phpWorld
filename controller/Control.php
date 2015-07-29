@@ -19,7 +19,7 @@ static function findCitiesOf($country){
 static function authorization($login,$password){
     $pages=array('?','view/home.php');
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
-    $loc=$con->checkLogin($_POST["userName"], $_POST["password"], $pages);
+    $loc=$con->checkLogin($login, $password, $pages);
     if($loc==$pages[1]){
     header("Location: $loc");
     }
