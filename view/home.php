@@ -52,7 +52,7 @@ session_start();
             
             
             <form class="countryInfoField" method="get" action="countryInfo.php">
-                <input type="text" placeholder="Enter country name" name="country">
+                <input type="text" id="searchField" placeholder="Enter country name" name="country" oninput="getNamesAJAX(this)">
                 <input type="submit" value="submit">
             </form>
             <?php
@@ -69,7 +69,15 @@ session_start();
             <canvas id="myCanvas3" width="212" height="212"></canvas>
             <canvas id="myCanvas4" width="212" height="212"></canvas>
         </div>
+        <script src="../js/jquery-1.11.2.min.js"></script>
         <script src="../js/newjavascript.js"></script>
+        <script>
+        function getNamesAJAX(obj){
+        $.ajax({url: "demo_test.txt", success: function(result){
+        $("#div1").html(result);
+        }});
+            };
+        </script>
         
     </body>
 </html>
