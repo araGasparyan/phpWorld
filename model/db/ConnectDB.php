@@ -98,8 +98,8 @@ class ConnectDB {
         return $this->result;
     }
     
-    //The method returns json - which is an object of first (by alphavite) 10 countries which begin with letter $letter 
-    function getTenCountriesWithLetter($letter, $limit){
+    //The method returns json - which is an object of first (by alphavite) $limit countries which begin with letter $letter 
+    function getCountriesWithLetter($letter, $limit){
         $this->sql="SELECT `country`.`Name` FROM country WHERE `country`.`Name` LIKE('".$letter."%') ORDER BY `country`.`Name` LIMIT ".$limit.";";
         $this->result=$this->con->query($this->sql);
         $this->con->close();

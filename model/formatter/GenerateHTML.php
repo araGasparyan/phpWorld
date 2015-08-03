@@ -65,7 +65,7 @@ class generateHTML {
         'Europe'=>'Europe.jpg',
         'North America'=>'North_America.png',
         'Oceania'=>'Oceania.png',
-        'South America'=>'South_America'
+        'South America'=>'South_America.png'
     );
     if ($result->num_rows > 0) {
         $columns=$result->fetch_fields();

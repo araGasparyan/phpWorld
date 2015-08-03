@@ -263,3 +263,20 @@ a {
     padding-top: 50px;
   
 }
+
+#names{
+	width: 250px;
+	min-height: 100px;
+  	list-style: none;
+        
+       
+}
+
+#names li {
+     padding-top: 5px;
+     cursor: pointer;
+}
+
+.selected{
+    background-color: cyan;
+}

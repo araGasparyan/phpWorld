@@ -17,6 +17,10 @@ session_start();
         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
         <title>My first PHP Hello World))</title>
         <link rel="stylesheet" href="../CSS/style.css">
+      
+	
+	
+
     </head>
     <body>
         <header>
@@ -52,12 +56,22 @@ session_start();
             
             
             <form class="countryInfoField" method="get" action="countryInfo.php">
-                <input type="text" id="searchField" placeholder="Enter country name" name="country" oninput="getNamesAJAX(this)">
-                <input type="submit" value="submit">
+                <div class="">
+                    <input type="text" id="searchField" autocomplete="off" placeholder="Enter country name" name="country" oninput="getNamesAJAX1()">               
+                    <input type="submit" value="submit">
+                </div>
+                <ul id="names">
+                </ul>
             </form>
+            
+            <div id="qwe">
+               
+            </div>
+            
             <?php
         
             ?>
+           
         </section>
          <br>
          <br>
@@ -72,11 +86,76 @@ session_start();
         <script src="../js/jquery-1.11.2.min.js"></script>
         <script src="../js/newjavascript.js"></script>
         <script>
-        function getNamesAJAX(obj){
-        $.ajax({url: "demo_test.txt", success: function(result){
-        $("#div1").html(result);
-        }});
-            };
+
+        $(document).ready(function(){
+       
+        });
+
+
+        var liSelected;
+        function choose(arg){
+        $("#searchField").val(arg.innerHTML);
+        $('li').removeClass('selected');
+        $("#names").html("");
+        }
+        
+        function fon(arg){
+        $('li').removeClass('selected');
+        $(arg).addClass('selected');
+        liSelected = $('li').eq($( "li" ).index(arg));
+        }
+        
+        function unfon(arg){
+        $('li').removeClass('selected');
+        liSelected = $('li').eq(-1);
+        }
+            
+        function getNamesAJAX1()  {
+        $("#names").html("");
+       
+        $.getJSON("countryListJSON.php?q="+$("#searchField").val(), function(data) {
+        for(i = 0; i < data.length; i++) {
+        $("#names").append("<li onclick='choose(this)' onmouseover='fon(this)' onmouseout='unfon(this)'>"+data[i]+"</li>");
+        }
+        });
+         if($("#searchField").val()==0){
+             $("#names").html("");
+        }
+    
+        $('.countryInfoField').keydown(function(e){
+            
+            if(e.which === 40){
+                if(liSelected){
+                    liSelected.removeClass('selected');
+                    next = liSelected.next();
+                        if(next.length > 0){
+                            liSelected = next.addClass('selected');
+                        }else{
+                            liSelected = $('li').eq(0).addClass('selected');
+                        }
+                }else{
+                    liSelected = $('li').eq(0).addClass('selected');
+                }
+                 $("#searchField").val(liSelected.text());
+            }else if(e.which === 38){
+                if(liSelected){
+                    liSelected.removeClass('selected');
+                    next = liSelected.prev();
+                        if(next.length > 0){
+                            liSelected = next.addClass('selected');
+                        }else{
+                            liSelected = $('li').last().addClass('selected');
+                        }
+                }else{
+                    liSelected = $('li').last().addClass('selected');
+                }
+                $("#searchField").val(liSelected.text());
+            }
+        });
+        }
+       
+
+
         </script>
         
     </body>
