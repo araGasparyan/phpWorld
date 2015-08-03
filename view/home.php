@@ -91,9 +91,9 @@ session_start();
        
         });
 
-
         var liSelected;
-        function choose(arg){
+        
+             function choose(arg){
         $("#searchField").val(arg.innerHTML);
         $('li').removeClass('selected');
         $("#names").html("");
@@ -102,17 +102,19 @@ session_start();
         function fon(arg){
         $('li').removeClass('selected');
         $(arg).addClass('selected');
-        liSelected = $('li').eq($( "li" ).index(arg));
+        liSelected = $('li').eq($("li").index(arg));
         }
         
         function unfon(arg){
         $('li').removeClass('selected');
         liSelected = $('li').eq(-1);
         }
-            
-        function getNamesAJAX1()  {
-        $("#names").html("");
        
+       
+        function getNamesAJAX1()  {
+        $( ".countryInfoField").unbind( "keydown" );
+        $("#names").html("");
+        
         $.getJSON("countryListJSON.php?q="+$("#searchField").val(), function(data) {
         for(i = 0; i < data.length; i++) {
         $("#names").append("<li onclick='choose(this)' onmouseover='fon(this)' onmouseout='unfon(this)'>"+data[i]+"</li>");
@@ -123,7 +125,6 @@ session_start();
         }
     
         $('.countryInfoField').keydown(function(e){
-            
             if(e.which === 40){
                 if(liSelected){
                     liSelected.removeClass('selected');
@@ -136,7 +137,7 @@ session_start();
                 }else{
                     liSelected = $('li').eq(0).addClass('selected');
                 }
-                 $("#searchField").val(liSelected.text());
+                $("#searchField").val(liSelected.text());
             }else if(e.which === 38){
                 if(liSelected){
                     liSelected.removeClass('selected');
@@ -152,7 +153,8 @@ session_start();
                 $("#searchField").val(liSelected.text());
             }
         });
-        }
+         }
+    
        
 
 
