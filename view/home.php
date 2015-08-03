@@ -16,7 +16,8 @@ session_start();
     <head>
         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
         <title>My first PHP Hello World))</title>
-        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/formstyle.css" media="all">
       
 	
 	
@@ -63,11 +64,106 @@ session_start();
                 <ul id="names">
                 </ul>
             </form>
-            
-            <div id="qwe">
-               
-            </div>
-            
+   
+        <div id="form_container">
+            <h1><a></a></h1>
+            <form id="form_1038581" class="appnitro"  method="post" action="">
+		<div class="form_description">
+                    <h2>Fill the form!!</h2>
+                    <p>Find the country of your dream.</p>
+		</div>				
+		<ul>
+                    <li id="li_6" >
+                        <label class="description" for="element_6">Continent </label>
+                            <div>
+                                <select class="element select medium" id="element_6" name="element_6"> 
+                                    <option value="" selected="selected"></option>
+                                    <option value="1" >Africa</option>
+                                    <option value="2" >Antarctica</option>
+                                    <option value="3" >Asia</option>
+                                    <option value="4" >Europe</option>
+                                    <option value="5" >North America</option>
+                                    <option value="6" >Oceania</option>
+                                    <option value="7" >South America</option>
+                                </select>
+                            </div> 
+                    </li>		
+                    <li id="li_1" >
+                        <label class="description" for="element_1">Region</label>
+                        <div class="regionInfoField">
+                            <input id="element_1" name="element_1" autocomplete="off" class="element text medium" type="text" maxlength="255" value="" oninput="getNamesAJAX()" />
+                            <ul id="regionnames">
+                            </ul>
+                        </div> 
+                    </li>
+                    <li id="li_2" >
+                        <label class="description" for="element_2">Surface</label>
+                        <span>
+                            <input id="element_2_1" name= "element_2_1" autocomplete="off" class="element text" maxlength="255" size="8" value=""/>
+                            <label>min</label>
+                        </span>
+                        <span>-</span>
+                        <span>
+                            <input id="element_2_2" name= "element_2_2" autocomplete="off" class="element text" maxlength="255" size="8" value=""/>
+                            <label>max</label>
+                        </span> 
+                    </li>		
+                    <li id="li_3" >
+                        <label class="description" for="element_3">Population </label>
+                        <span>
+                            <input id="element_3_1" name= "element_3_1" class="element text" maxlength="255" size="8" value=""/>
+                            <label>min</label>
+                        </span>
+                        <span>-</span>
+                        <span>
+                            <input id="element_3_2" name= "element_3_2" class="element text" maxlength="255" size="8" value=""/>
+                            <label>max</label>
+                        </span> 
+                    </li>
+                    <li id="li_7" >
+                        <label class="description" for="element_7">Life expectancy </label>
+                        <span>
+                            <input id="element_7_1" name="element_7" class="element radio" type="radio" value="1" />
+                            <label class="choice" for="element_7_1">less than 55</label>
+                            <input id="element_7_2" name="element_7" class="element radio" type="radio" value="2" checked="checked"/>
+                            <label class="choice" for="element_7_2">between 55 and 70</label>
+                            <input id="element_7_3" name="element_7" class="element radio" type="radio" value="3" />
+                            <label class="choice" for="element_7_3">more than 70</label>
+                        </span> 
+                    </li>		
+                    <li id="li_4" >
+                        <label class="description" for="element_4">Government form </label>
+                        <div class="govFormInfoField">
+                            <input id="element_4" autocomplete="off" name="element_4" class="element text medium" type="text" maxlength="255" value=""  oninput="getNamesAJAX2()"/>
+                            <ul id="govformnames">
+                            </ul>
+                        </div> 
+                    </li>
+                    <li id="li_5" >
+                        <label class="description" for="element_5">City count </label>
+                        <div>
+                            <input id="element_5" name="element_5" class="element text medium" type="text" maxlength="255" value=""/> 
+                        </div> 
+                    </li>
+                    <li id="li_8" >
+                        <label class="description" for="element_8">Languages </label>
+                        <span>
+                            <input id="element_8_1" name="element_8_1" class="element checkbox" type="checkbox" value="1" />
+                            <label class="choice" for="element_8_1">First option</label>
+                            <input id="element_8_2" name="element_8_2" class="element checkbox" type="checkbox" value="1" />
+                            <label class="choice" for="element_8_2">Second option</label>
+                            <input id="element_8_3" name="element_8_3" class="element checkbox" type="checkbox" value="1" />
+                            <label class="choice" for="element_8_3">Third option</label>
+                        </span> 
+                    </li>
+                    <li class="buttons">
+			<input type="hidden" name="form_id" value="1038581" />
+                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+                    </li>
+                </ul>
+            </form>	
+        </div>
+      
             <?php
         
             ?>
@@ -84,19 +180,27 @@ session_start();
             <canvas id="myCanvas4" width="212" height="212"></canvas>
         </div>
         <script src="../js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="../js/form.js"></script>
         <script src="../js/newjavascript.js"></script>
         <script>
 
         $(document).ready(function(){
-       
+        $('body').click(function() {
+                $("#names").html("");
+                 $("#regionnames").html(""); 
+                 $("#govformnames").html("");
         });
+        });
+        
+        
+        
 
         var liSelected;
         
-             function choose(arg){
-        $("#searchField").val(arg.innerHTML);
+        function choose(arg,inputid,choiceid){
+        $(inputid).val(arg.innerHTML);
         $('li').removeClass('selected');
-        $("#names").html("");
+        $(choiceid).html("");
         }
         
         function fon(arg){
@@ -112,12 +216,13 @@ session_start();
        
        
         function getNamesAJAX1()  {
+        liSelected=undefined;
         $( ".countryInfoField").unbind( "keydown" );
         $("#names").html("");
         
         $.getJSON("countryListJSON.php?q="+$("#searchField").val(), function(data) {
         for(i = 0; i < data.length; i++) {
-        $("#names").append("<li onclick='choose(this)' onmouseover='fon(this)' onmouseout='unfon(this)'>"+data[i]+"</li>");
+        $("#names").append("<li onclick='choose(this,"+'"#searchField",'+'"#names")'+"'"+ "onmouseover='fon(this)' onmouseout='unfon(this)'>"+data[i]+"</li>" );
         }
         });
          if($("#searchField").val()==0){
@@ -154,8 +259,96 @@ session_start();
             }
         });
          }
+         
+        function getNamesAJAX()  {
+        liSelected=undefined;
+        $( ".regionInfoField").unbind( "keydown" );
+        $("#regionnames").html("");
+                                                    
+        $.getJSON("regionListJSON.php?q="+$("#element_1").val(), function(data) {
+        for(i = 0; i < data.length; i++) {
+        $("#regionnames").append("<li onclick='choose(this,"+'"#element_1",'+'"#regionnames")'+"'"+ "onmouseover='fon(this)' onmouseout='unfon(this)'>"+data[i]+"</li>" );
+        }
+        });
+         if($("#element_1").val()==0){
+             $("#regionnames").html("");
+        }
     
-       
+        $('.regionInfoField').keydown(function(e){
+            if(e.which === 40){
+                if(liSelected){
+                    liSelected.removeClass('selected');
+                    next = liSelected.next();
+                        if(next.length > 0){
+                            liSelected = next.addClass('selected');
+                        }else{
+                            liSelected = $('.regionInfoField li').eq(0).addClass('selected');
+                        }
+                }else{
+                    liSelected = $('.regionInfoField li').eq(0).addClass('selected');
+                }
+                $("#element_1").val(liSelected.text());
+            }else if(e.which === 38){
+                if(liSelected){
+                    liSelected.removeClass('selected');
+                    next = liSelected.prev();
+                        if(next.length > 0){
+                            liSelected = next.addClass('selected');
+                        }else{
+                            liSelected = $('.regionInfoField li').last().addClass('selected');
+                        }
+                }else{
+                    liSelected = $('.regionInfoField li').last().addClass('selected');
+                }
+                $("#element_1").val(liSelected.text());
+            }
+        });
+         }
+    
+       function getNamesAJAX2()  {
+        liSelected=undefined;
+        $( ".govFormInfoField").unbind( "keydown" );
+        $("#govformnames").html("");
+                                                    
+        $.getJSON("govFormListJSON.php?q="+$("#element_4").val(), function(data) {
+        for(i = 0; i < data.length; i++) {
+        $("#govformnames").append("<li onclick='choose(this,"+'"#element_4",'+'"#govformnames")'+"'"+ "onmouseover='fon(this)' onmouseout='unfon(this)'>"+data[i]+"</li>" );
+        }
+        });
+         if($("#element_4").val()==0){
+             $("#govformnames").html("");
+        }
+    
+        $('.govFormInfoField').keydown(function(e){
+            if(e.which === 40){
+                if(liSelected){
+                    liSelected.removeClass('selected');
+                    next = liSelected.next();
+                        if(next.length > 0){
+                            liSelected = next.addClass('selected');
+                        }else{
+                            liSelected = $('.govFormInfoField li').eq(0).addClass('selected');
+                        }
+                }else{
+                    liSelected = $('.govFormInfoField li').eq(0).addClass('selected');
+                }
+                $("#element_4").val(liSelected.text());
+            }else if(e.which === 38){
+                if(liSelected){
+                    liSelected.removeClass('selected');
+                    next = liSelected.prev();
+                        if(next.length > 0){
+                            liSelected = next.addClass('selected');
+                        }else{
+                            liSelected = $('.govFormInfoField li').last().addClass('selected');
+                        }
+                }else{
+                    liSelected = $('.govFormInfoField li').last().addClass('selected');
+                }
+                $("#element_4").val(liSelected.text());
+            }
+        });
+         }
 
 
         </script>

@@ -280,3 +280,13 @@ a {
 .selected{
     background-color: cyan;
 }
+
+#regionnames li {
+     padding-top: 5px;
+     cursor: pointer;
+}
+
+#govformnames li {
+     padding-top: 5px;
+     cursor: pointer;
+}

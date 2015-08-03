@@ -59,7 +59,26 @@ static function AutoCompleteCountriesJSON($letter, $limit){
     return $output;
     }
 }
+
+//The method returns JSON of the list of regions which begin with letter $letter. The length of the list is equal to $limit
+static function AutoCompleteRegionsJSON($letter, $limit){
+     if($letter!=""){
+    $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
+    $result=$con->getRegionsWithLetter($letter, $limit);
+    $output=JSONFormat::generateJSONArray($result);
+    return $output;
+    }
+}
    
+//The method returns JSON of the list of goverment forms which begin with letter $letter. The length of the list is equal to $limit
+static function AutoCompleteGovFormJSON($letter, $limit){
+     if($letter!=""){
+    $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
+    $result=$con->getGovFormsWithLetter($letter, $limit);
+    $output=JSONFormat::generateJSONArray($result);
+    return $output;
+    }
+}
 
     
 }

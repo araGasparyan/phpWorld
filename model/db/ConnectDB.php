@@ -105,5 +105,22 @@ class ConnectDB {
         $this->con->close();
         return $this->result;
     }
-   
+    
+    //The method returns json - which is an object of first (by alphavite) $limit regions which begin with letter $letter 
+    function getRegionsWithLetter($letter, $limit){
+        $this->sql="SELECT `country`.`Region` FROM country WHERE `country`.`Region` LIKE('".$letter."%') GROUP BY `country`.`Region` ORDER BY `country`.`Region` LIMIT ".$limit.";";
+        $this->result=$this->con->query($this->sql);
+        $this->con->close();
+        return $this->result;
+    }
+    
+    //The method returns json - which is an object of first (by alphavite) $limit goverment forms which begin with letter $letter 
+    function getGovFormsWithLetter($letter, $limit){
+        $this->sql="SELECT `country`.`GovernmentForm` FROM country WHERE `country`.`GovernmentForm` LIKE('".$letter."%') GROUP BY `country`.`GovernmentForm` ORDER BY `country`.`GovernmentForm` LIMIT ".$limit.";";
+        $this->result=$this->con->query($this->sql);
+        $this->con->close();
+        return $this->result;
+    }
+    
+  
 }
