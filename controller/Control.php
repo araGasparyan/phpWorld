@@ -62,7 +62,7 @@ static function AutoCompleteCountriesJSON($letter, $limit){
 
 //The method returns JSON of the list of regions which begin with letter $letter. The length of the list is equal to $limit
 static function AutoCompleteRegionsJSON($letter, $limit){
-     if($letter!=""){
+    if($letter!=""){
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $result=$con->getRegionsWithLetter($letter, $limit);
     $output=JSONFormat::generateJSONArray($result);
@@ -80,7 +80,29 @@ static function AutoCompleteGovFormJSON($letter, $limit){
     }
 }
 
+//The method returns list of the countries which are suggested to the user
+static function findOrderedCountries($continent, $region, $surface_min, $surface_max, $population_min, $population_max, $life_expectancy, $government_form, $city_count, $languages) {
+    if($continent==""){$continent='-1';}
+    if($region==""){$region='%';}
+    if($surface_min==""){$surface_min='-1';}
+    if($surface_max==""){ $surface_max='9000000000';}
+    if($population_min==""){$population_min='-1';}
+    if($population_max==""){$population_max='9000000000';}
+    if(empty($life_expectancy)){$life_expectancy=-1;}
+    if($government_form==""){$government_form='%';}
+    if($city_count==""){$city_count='-1';}
+    if(empty($languages)){echo 'ba aper';}
     
+    $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
+    $result=$con->findOrderedCountries($continent, $region, $surface_min, $surface_max, $population_min, $population_max, $life_expectancy, $government_form, $city_count, $languages);
+    $output=GenerateHTML::generateList($result);
+    return $output;
+}
+  
+
+
+
+
 }
 
 

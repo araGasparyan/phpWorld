@@ -67,93 +67,103 @@ session_start();
    
         <div id="form_container">
             <h1><a></a></h1>
-            <form id="form_1038581" class="appnitro"  method="post" action="">
+            <form id="form_1038581" class="appnitro"  method="post" action="suggestions.php">
 		<div class="form_description">
                     <h2>Fill the form!!</h2>
                     <p>Find the country of your dream.</p>
 		</div>				
 		<ul>
                     <li id="li_6" >
-                        <label class="description" for="element_6">Continent </label>
+                        <label class="description" for="element_6">Continent</label>
                             <div>
-                                <select class="element select medium" id="element_6" name="element_6"> 
-                                    <option value="" selected="selected"></option>
-                                    <option value="1" >Africa</option>
-                                    <option value="2" >Antarctica</option>
-                                    <option value="3" >Asia</option>
-                                    <option value="4" >Europe</option>
-                                    <option value="5" >North America</option>
-                                    <option value="6" >Oceania</option>
-                                    <option value="7" >South America</option>
+                                <select class="element select medium" id="element_6" name="continent"> 
+                                    <option value="-1" selected="selected">any</option>
+                                    <option value="0" >Africa</option>
+                                    <option value="1" >Antarctica</option>
+                                    <option value="2" >Asia</option>
+                                    <option value="3" >Europe</option>
+                                    <option value="4" >North America</option>
+                                    <option value="5" >Oceania</option>
+                                    <option value="6" >South America</option>
                                 </select>
                             </div> 
-                    </li>		
+                    </li>
+                    
                     <li id="li_1" >
                         <label class="description" for="element_1">Region</label>
                         <div class="regionInfoField">
-                            <input id="element_1" name="element_1" autocomplete="off" class="element text medium" type="text" maxlength="255" value="" oninput="getNamesAJAX()" />
+                            <input id="element_1" name="region" autocomplete="off" class="element text medium" type="text" maxlength="255" value="" oninput="getNamesAJAX()" />
                             <ul id="regionnames">
                             </ul>
                         </div> 
                     </li>
+                    
                     <li id="li_2" >
                         <label class="description" for="element_2">Surface</label>
                         <span>
-                            <input id="element_2_1" name= "element_2_1" autocomplete="off" class="element text" maxlength="255" size="8" value=""/>
+                            <input id="element_2_1" name= "surface_min" autocomplete="off" class="element text" maxlength="255" size="8" value=""/>
                             <label>min</label>
                         </span>
                         <span>-</span>
                         <span>
-                            <input id="element_2_2" name= "element_2_2" autocomplete="off" class="element text" maxlength="255" size="8" value=""/>
-                            <label>max</label>
-                        </span> 
-                    </li>		
-                    <li id="li_3" >
-                        <label class="description" for="element_3">Population </label>
-                        <span>
-                            <input id="element_3_1" name= "element_3_1" class="element text" maxlength="255" size="8" value=""/>
-                            <label>min</label>
-                        </span>
-                        <span>-</span>
-                        <span>
-                            <input id="element_3_2" name= "element_3_2" class="element text" maxlength="255" size="8" value=""/>
+                            <input id="element_2_2" name= "surface_max" autocomplete="off" class="element text" maxlength="255" size="8" value=""/>
                             <label>max</label>
                         </span> 
                     </li>
+                    
+                    <li id="li_3" >
+                        <label class="description" for="element_3">Population </label>
+                        <span>
+                            <input id="element_3_1" autocomplete="off" name= "population_min" class="element text" maxlength="255" size="8" value=""/>
+                            <label>min</label>
+                        </span>
+                        <span>-</span>
+                        <span>
+                            <input id="element_3_2" autocomplete="off" name= "population_max" class="element text" maxlength="255" size="8" value=""/>
+                            <label>max</label>
+                        </span> 
+                    </li>
+                    
                     <li id="li_7" >
                         <label class="description" for="element_7">Life expectancy </label>
                         <span>
-                            <input id="element_7_1" name="element_7" class="element radio" type="radio" value="1" />
+                            <input id="element_7_0" name="life_expectancy" class="element radio" type="radio" value="0" checked="checked"/>
+                            <label class="choice" for="element_7_0">any</label>
+                            <input id="element_7_1" name="life_expectancy" class="element radio" type="radio" value="1" />
                             <label class="choice" for="element_7_1">less than 55</label>
-                            <input id="element_7_2" name="element_7" class="element radio" type="radio" value="2" checked="checked"/>
+                            <input id="element_7_2" name="life_expectancy" class="element radio" type="radio" value="2" />
                             <label class="choice" for="element_7_2">between 55 and 70</label>
-                            <input id="element_7_3" name="element_7" class="element radio" type="radio" value="3" />
+                            <input id="element_7_3" name="life_expectancy" class="element radio" type="radio" value="3" />
                             <label class="choice" for="element_7_3">more than 70</label>
                         </span> 
-                    </li>		
+                    </li>
+                    
                     <li id="li_4" >
-                        <label class="description" for="element_4">Government form </label>
+                        <label class="description" for="element_4">Government form</label>
                         <div class="govFormInfoField">
-                            <input id="element_4" autocomplete="off" name="element_4" class="element text medium" type="text" maxlength="255" value=""  oninput="getNamesAJAX2()"/>
+                            <input id="element_4" autocomplete="off" name="government_form" class="element text medium" type="text" maxlength="255" value=""  oninput="getNamesAJAX2()"/>
                             <ul id="govformnames">
                             </ul>
                         </div> 
                     </li>
+                    
                     <li id="li_5" >
                         <label class="description" for="element_5">City count </label>
                         <div>
-                            <input id="element_5" name="element_5" class="element text medium" type="text" maxlength="255" value=""/> 
+                            <input id="element_5" name="city_count" class="element text medium" type="text" maxlength="255" value=""/> 
                         </div> 
                     </li>
+                    
                     <li id="li_8" >
                         <label class="description" for="element_8">Languages </label>
                         <span>
+                            <input id="languageField" name="" class="element text medium" type="text" maxlength="255" value=""/> 
                             <input id="element_8_1" name="element_8_1" class="element checkbox" type="checkbox" value="1" />
-                            <label class="choice" for="element_8_1">First option</label>
+                            <label class="choice" for="element_8_1">English</label>
                             <input id="element_8_2" name="element_8_2" class="element checkbox" type="checkbox" value="1" />
-                            <label class="choice" for="element_8_2">Second option</label>
+                            <label class="choice" for="element_8_2">Dutch</label>
                             <input id="element_8_3" name="element_8_3" class="element checkbox" type="checkbox" value="1" />
-                            <label class="choice" for="element_8_3">Third option</label>
+                            <label class="choice" for="element_8_3">Papiamento</label>
                         </span> 
                     </li>
                     <li class="buttons">

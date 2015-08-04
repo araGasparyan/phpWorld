@@ -81,6 +81,22 @@ class generateHTML {
     return $output;
     }
     
+    //The method returns <li></li> which have text taken from $result (ex mysql query-result).
+    static function generateList($result){
+    $output="";    
+    if ($result->num_rows > 0) {
+        $columns=$result->fetch_fields();
+        while($row = $result->fetch_assoc()) {
+        foreach ($columns as $val) {
+        $output.="<li>".$row[$val->name]."</li>";
+        }
+        }
+    } else {
+    return "0 results";
+    }
+    return $output;
+    }
+    
     
     
     

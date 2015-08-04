@@ -1,4 +1,6 @@
 <?php
+ require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/validation/Matchers.php';
+
 
 //The objects of the class are used for connecting to the mysql database, and for queris
 class ConnectDB {
@@ -121,6 +123,33 @@ class ConnectDB {
         $this->con->close();
         return $this->result;
     }
+    
+    //The method returns mysql query-result of the countries, which are ordered by the user
+    function  findOrderedCountries($continent, $region, $surface_min, $surface_max, $population_min, $population_max, $life_expectancy, $government_form, $city_count, $languages){
+        $this->sql="SELECT country.`Name` 
+                    FROM `country`,
+
+                    (SELECT COUNT(city.`CountryCode`) AS cityCount, country.`Code` AS CountryCode
+                    FROM `country`, `city`
+                    WHERE `country`.`Code`=`city`.`CountryCode` GROUP BY `city`.`CountryCode`) AS tmp,
+
+                    `countrylanguage`
+                    
+                    WHERE `country`.`Code`=tmp.CountryCode AND `country`.`Code`=`countrylanguage`.`CountryCode`
+                    AND `country`.`Continent` LIKE '". Matchers::MatchContinentName($continent)."' AND `country`.`Region` LIKE '".$region."' AND `country`.`GovernmentForm` LIKE '".$government_form."' ".
+                    Matchers::MatchLifeExpectancyStatement($life_expectancy).
+                    " AND `country`.`Population`>='".$population_min."' AND country.`Population`<='".$population_max."' ".
+                    "AND `country`.`SurfaceArea` >= '".$surface_min."' AND `country`.`SurfaceArea` <='".$surface_max."' ".
+                    "AND cityCount>=".$city_count.
+                    " GROUP BY country.`Name`;";
+        
+        echo  $this->sql;
+        
+        $this->result=$this->con->query($this->sql);
+        $this->con->close();
+        return $this->result;
+    }
+   
     
   
 }
