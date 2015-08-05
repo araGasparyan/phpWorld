@@ -93,8 +93,9 @@ class ConnectDB {
     //The method returns mysql query-result of the attributes of the $country
     function getCountryInfo($countryName){
         $this->sql="SELECT `Continent`, `Region`, `SurfaceArea`, `IndepYear`, `country`.`Population`, `LifeExpectancy`, `LocalName`, `GovernmentForm`, `HeadOfState`, city.`Name` AS capital"
-                   . "  FROM `world`.`country`, world.`city` "
-                   . " WHERE city.`CountryCode`=`country`.`Code` AND city.`ID` = `country`.`Capital` AND `country`.`Name` = '".$countryName."';";
+                   . "  FROM `world`.`country` LEFT JOIN world.`city` "
+                   . " ON city.`CountryCode`=`country`.`Code` Where (city.`ID` = `country`.`Capital` OR ISNULL(city.`ID`)) AND `country`.`Name` = '".$countryName."';";
+        //echo $this->sql;
         $this->result=$this->con->query($this->sql);
         $this->con->close();
         return $this->result;
@@ -127,16 +128,14 @@ class ConnectDB {
     //The method returns mysql query-result of the countries, which are ordered by the user
     function  findOrderedCountries($continent, $region, $surface_min, $surface_max, $population_min, $population_max, $life_expectancy, $government_form, $city_count, $languages){
         $this->sql="SELECT country.`Name` 
-                    FROM `country`,
-
-                    (SELECT COUNT(city.`CountryCode`) AS cityCount, country.`Code` AS CountryCode
-                    FROM `country`, `city`
-                    WHERE `country`.`Code`=`city`.`CountryCode` GROUP BY `city`.`CountryCode`) AS tmp,
-
-                    `countrylanguage`
+                    FROM `country`  
+                    LEFT JOIN `countrylanguage` ON `country`.`Code`=`countrylanguage`.`CountryCode` LEFT JOIN 
+                    (SELECT COUNT(city.`CountryCode`) AS cityCount, country.`Code` AS CountryCode FROM
+                     `country` LEFT JOIN `city` ON `country`.`Code` = `city`.`CountryCode`
+                     GROUP BY `country`.`Code`) AS tmp 
+                    ON `country`.`Code`=tmp.CountryCode 
                     
-                    WHERE `country`.`Code`=tmp.CountryCode AND `country`.`Code`=`countrylanguage`.`CountryCode`
-                    AND `country`.`Continent` LIKE '". Matchers::MatchContinentName($continent)."' AND `country`.`Region` LIKE '".$region."' AND `country`.`GovernmentForm` LIKE '".$government_form."' ".
+                    where `country`.`Continent` LIKE '". Matchers::MatchContinentName($continent)."' AND `country`.`Region` LIKE '".$region."' AND `country`.`GovernmentForm` LIKE '".$government_form."' ".
                     Matchers::MatchLifeExpectancyStatement($life_expectancy).
                     " AND `country`.`Population`>='".$population_min."' AND country.`Population`<='".$population_max."' ".
                     "AND `country`.`SurfaceArea` >= '".$surface_min."' AND `country`.`SurfaceArea` <='".$surface_max."' ".

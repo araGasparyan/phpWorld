@@ -81,17 +81,29 @@ class generateHTML {
     return $output;
     }
     
-    //The method returns <li></li> which have text taken from $result (ex mysql query-result).
-    static function generateList($result){
+    //The method returns <li></li> which include text taken from $result (ex mysql query-result).
+    //if $href argument is not null text from $result is also included into the <a></a>, whit href=$href atriibute
+    static function generateList($result,$href){
+ 
     $output="";    
     if ($result->num_rows > 0) {
-        $columns=$result->fetch_fields();
+        $columns=$result->fetch_fields();        
+        if($href!=null){       
         while($row = $result->fetch_assoc()) {
         $output.="<li>";
         foreach ($columns as $val) {
-        $output.="<a href='countryInfo.php?country=".$row[$val->name]."'>".$row[$val->name]."</a>";
+        $output.="<a href='".$href."=".$row[$val->name]."'>".$row[$val->name]."</a>";
         }
         $output.="</li>";
+        }
+        }else {
+        while($row = $result->fetch_assoc()) {
+        $output.="<li>";
+        foreach ($columns as $val) {
+        $output.=$row[$val->name];
+        }
+        $output.="</li>";
+        }   
         }
     } else {
     return "0 results";

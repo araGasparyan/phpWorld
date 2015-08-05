@@ -1,0 +1,13 @@
+{
+    "name": "lines/world",
+    "description": "geo website",
+    "authors": [
+        {
+            "name": "ara",
+            "email": "ara_gasparyan@yahoo.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.15"
+    }
+}

@@ -92,10 +92,9 @@ static function findOrderedCountries($continent, $region, $surface_min, $surface
     if($government_form==""){$government_form='%';}
     if($city_count==""){$city_count='-1';}
     //if(empty($languages)){echo 'ba aper';}
-    
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $result=$con->findOrderedCountries($continent, $region, $surface_min, $surface_max, $population_min, $population_max, $life_expectancy, $government_form, $city_count, $languages);
-    $output=GenerateHTML::generateList($result);
+    $output=GenerateHTML::generateList($result,'countryInfo.php?country');
     return $output;
 }
   

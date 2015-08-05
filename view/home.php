@@ -150,7 +150,7 @@ session_start();
                     <li id="li_5" >
                         <label class="description" for="element_5">City count </label>
                         <div>
-                            <input id="element_5" name="city_count" class="element text medium" type="text" maxlength="255" value=""/> 
+                            <input id="element_5" autocomplete="off" name="city_count" class="element text medium" type="text" maxlength="255" value=""/> 
                         </div> 
                     </li>
                     
