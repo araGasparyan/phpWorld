@@ -109,8 +109,8 @@ class ConnectDB {
     }
     
     //The method returns json - which is an object of first (by alphavite) $limit regions which begin with letter $letter 
-    function getRegionsWithLetter($letter, $limit){
-        $this->sql="SELECT `country`.`Region` FROM country WHERE `country`.`Region` LIKE('".$letter."%') GROUP BY `country`.`Region` ORDER BY `country`.`Region` LIMIT ".$limit.";";
+    function getRegionsWithLetter($letter, $limit, $continent){
+        $this->sql="SELECT `country`.`Region` FROM country WHERE `country`.`Region` LIKE('".$letter."%') AND `country`.`Continent` LIKE '".Matchers::MatchContinentName($continent)."' GROUP BY `country`.`Region` ORDER BY `country`.`Region` LIMIT ".$limit.";";
         $this->result=$this->con->query($this->sql);
         $this->con->close();
         return $this->result;

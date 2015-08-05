@@ -248,10 +248,10 @@ session_start();
                         if(next.length > 0){
                             liSelected = next.addClass('selected');
                         }else{
-                            liSelected = $('li').eq(0).addClass('selected');
+                            liSelected = $('.countryInfoField li').eq(0).addClass('selected');
                         }
                 }else{
-                    liSelected = $('li').eq(0).addClass('selected');
+                    liSelected = $('.countryInfoField li').eq(0).addClass('selected');
                 }
                 $("#searchField").val(liSelected.text());
             }else if(e.which === 38){
@@ -261,10 +261,10 @@ session_start();
                         if(next.length > 0){
                             liSelected = next.addClass('selected');
                         }else{
-                            liSelected = $('li').last().addClass('selected');
+                            liSelected = $('.countryInfoField li').last().addClass('selected');
                         }
                 }else{
-                    liSelected = $('li').last().addClass('selected');
+                    liSelected = $('.countryInfoField li').last().addClass('selected');
                 }
                 $("#searchField").val(liSelected.text());
             }
@@ -276,7 +276,7 @@ session_start();
         $( ".regionInfoField").unbind( "keydown" );
         $("#regionnames").html("");
                                                     
-        $.getJSON("regionListJSON.php?q="+$("#element_1").val(), function(data) {
+        $.getJSON("regionListJSON.php?q="+$("#element_1").val()+"&c="+$("#element_6").val(), function(data) {
         for(i = 0; i < data.length; i++) {
         $("#regionnames").append("<li onclick='choose(this,"+'"#element_1",'+'"#regionnames")'+"'"+ "onmouseover='fon(this)' onmouseout='unfon(this)'>"+data[i]+"</li>" );
         }

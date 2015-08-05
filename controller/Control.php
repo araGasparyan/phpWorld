@@ -61,10 +61,10 @@ static function AutoCompleteCountriesJSON($letter, $limit){
 }
 
 //The method returns JSON of the list of regions which begin with letter $letter. The length of the list is equal to $limit
-static function AutoCompleteRegionsJSON($letter, $limit){
+static function AutoCompleteRegionsJSON($letter, $limit, $continent){
     if($letter!=""){
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
-    $result=$con->getRegionsWithLetter($letter, $limit);
+    $result=$con->getRegionsWithLetter($letter, $limit, $continent);
     $output=JSONFormat::generateJSONArray($result);
     return $output;
     }

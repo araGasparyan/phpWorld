@@ -11,4 +11,4 @@ session_start();
 
 // get the q parameter from URL, the parameter q is the start of the regions
 //$q = ;
-echo Control::AutoCompleteRegionsJSON($_REQUEST['q'],3);
+echo Control::AutoCompleteRegionsJSON($_REQUEST['q'],3,$_REQUEST['c']);
