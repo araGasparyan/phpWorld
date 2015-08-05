@@ -142,9 +142,7 @@ class ConnectDB {
                     "AND `country`.`SurfaceArea` >= '".$surface_min."' AND `country`.`SurfaceArea` <='".$surface_max."' ".
                     "AND cityCount>=".$city_count.
                     " GROUP BY country.`Name`;";
-        
-        echo  $this->sql;
-        
+        //echo  $this->sql;
         $this->result=$this->con->query($this->sql);
         $this->con->close();
         return $this->result;

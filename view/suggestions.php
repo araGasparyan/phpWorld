@@ -32,9 +32,9 @@ session_start();
         <?php
         require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
         
-        echo Control::findOrderedCountries($_POST['continent'], $_POST['region'], $_POST['surface_min'], 
-                $_POST['surface_max'], $_POST['population_min'], $_POST['population_max'], $_POST['life_expectancy'], $_POST['government_form'],
-                $_POST['city_count'],""); 
+        echo Control::findOrderedCountries($_GET['continent'], $_GET['region'], $_GET['surface_min'], 
+                $_GET['surface_max'], $_GET['population_min'], $_GET['population_max'], $_GET['life_expectancy'], $_GET['government_form'],
+                $_GET['city_count'],"");
         
         
         
@@ -46,7 +46,7 @@ session_start();
 //        echo var_dump($_POST['surface_max']).'<br>';
 //        echo var_dump($_POST['population_min']).'<br>';
 //        echo var_dump($_POST['population_max']).'<br>';
-//        echo var_dump($_POST['life_expectancy']).'<br>';
+//        echo var_dump($_GET['life_expectancy']).'<br>';
 //        echo var_dump($_POST['government_form']).'<br>';
 //        echo var_dump($_POST['city_count']).'<br>';
 //        if(isset($_POST['element_8_1'])){

@@ -67,7 +67,7 @@ session_start();
    
         <div id="form_container">
             <h1><a></a></h1>
-            <form id="form_1038581" class="appnitro"  method="post" action="suggestions.php">
+            <form id="form_1038581" class="appnitro"  method="get" action="suggestions.php">
 		<div class="form_description">
                     <h2>Fill the form!!</h2>
                     <p>Find the country of your dream.</p>
@@ -154,7 +154,7 @@ session_start();
                         </div> 
                     </li>
                     
-                    <li id="li_8" >
+<!--                    <li id="li_8" >
                         <label class="description" for="element_8">Languages </label>
                         <span>
                             <input id="languageField" name="" class="element text medium" type="text" maxlength="255" value=""/> 
@@ -165,10 +165,11 @@ session_start();
                             <input id="element_8_3" name="element_8_3" class="element checkbox" type="checkbox" value="1" />
                             <label class="choice" for="element_8_3">Papiamento</label>
                         </span> 
-                    </li>
+                    </li>-->
+
                     <li class="buttons">
-			<input type="hidden" name="form_id" value="1038581" />
-                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+			<input type="hidden" value="1038581"/>
+                        <input id="saveForm" class="button_text" type="submit" value="Submit" />
                     </li>
                 </ul>
             </form>	

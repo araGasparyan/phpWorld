@@ -21,7 +21,7 @@ session_start();
     </head>
     <body>
         <?php
-        require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
         echo Control::findCountriesByPop($_GET['lower']);
         ?>
     </body>

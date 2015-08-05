@@ -29,7 +29,7 @@ session_start();
             </div>
         </header>
         <?php 
-        require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
         $output=Control::CountryInfo($_GET['country']);
         if($output=='0 results'){
             echo header("Location: home.php ");

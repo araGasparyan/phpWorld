@@ -1,8 +1,8 @@
 <?php
- require $_SERVER['DOCUMENT_ROOT'].'/world/model/db/ConnectDB.php';
- require $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/GenerateHTML.php';
- require $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/JSONFormat.php';
- require $_SERVER['DOCUMENT_ROOT'].'/world/controller/ProjectGlobals.php';
+ require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/db/ConnectDB.php';
+ require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/GenerateHTML.php';
+ require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/JSONFormat.php';
+ require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/ProjectGlobals.php';
 
 //This class is a container of methods which are called from view folders
 class Control {
@@ -88,10 +88,10 @@ static function findOrderedCountries($continent, $region, $surface_min, $surface
     if($surface_max==""){ $surface_max='9000000000';}
     if($population_min==""){$population_min='-1';}
     if($population_max==""){$population_max='9000000000';}
-    if(empty($life_expectancy)){$life_expectancy=-1;}
+    if($life_expectancy==""){$life_expectancy="-1";}
     if($government_form==""){$government_form='%';}
     if($city_count==""){$city_count='-1';}
-    if(empty($languages)){echo 'ba aper';}
+    //if(empty($languages)){echo 'ba aper';}
     
     $con=new ConnectDB(ProjectGlobals::$IPADDRESS, ProjectGlobals::$USER, ProjectGlobals::$PASSWORD, ProjectGlobals::$DATABASE);
     $result=$con->findOrderedCountries($continent, $region, $surface_min, $surface_max, $population_min, $population_max, $life_expectancy, $government_form, $city_count, $languages);

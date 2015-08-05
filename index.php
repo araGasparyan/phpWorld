@@ -15,7 +15,7 @@ and open the template in the editor.
         session_start();
         if(!(empty($_POST['userName'])||empty($_POST['password']))){
         $_SESSION['userName']=$_POST['userName'];
-        require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
         Control::authorization($_POST["userName"], $_POST["password"]);
         }else{
         }

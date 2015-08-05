@@ -1,6 +1,6 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'].'/world/model/validation/FindCSSClass.php';
-require $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/Cities.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/validation/FindCSSClass.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/Cities.php';
 
 //The class is a container of methods which generate data (as html, arrays, ascarrays...) for the view pages 
 class generateHTML {
@@ -87,9 +87,11 @@ class generateHTML {
     if ($result->num_rows > 0) {
         $columns=$result->fetch_fields();
         while($row = $result->fetch_assoc()) {
+        $output.="<li>";
         foreach ($columns as $val) {
-        $output.="<li>".$row[$val->name]."</li>";
+        $output.="<a href='countryInfo.php?country=".$row[$val->name]."'>".$row[$val->name]."</a>";
         }
+        $output.="</li>";
         }
     } else {
     return "0 results";

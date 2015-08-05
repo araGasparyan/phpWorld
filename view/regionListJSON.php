@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/Control.php';
 
 session_start();
 

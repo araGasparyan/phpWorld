@@ -290,3 +290,22 @@ a {
      padding-top: 5px;
      cursor: pointer;
 }
+
+.suggestions li{
+    list-style: none;
+    font-size: 30pt;
+    padding: 20px;
+    border: 1px rgba(51, 103, 153, 0.24) solid;
+    width: 90%;
+    background-color: rgba(222, 238, 255, 0.56);
+}
+
+.suggestions a {
+   color: #336799;
+   text-decoration: none;
+  }
+.suggestions a:hover {
+   color: #336799;
+  font-size: 31pt;
+   text-decoration: none;
+  }
