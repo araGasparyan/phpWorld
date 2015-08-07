@@ -1,5 +1,5 @@
 <?php
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/vendor/autoload.php';
 //Not used yet
 class FindCSSClass {
     

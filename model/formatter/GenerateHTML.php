@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/validation/FindCSSClass.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/Cities.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/vendor/autoload.php';
 //The class is a container of methods which generate data (as html, arrays, ascarrays...) for the view pages 
 class generateHTML {
     //The variable incapsulates output, which should be returned when methods of this method container are called 

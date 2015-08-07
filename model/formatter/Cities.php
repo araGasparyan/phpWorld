@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/AdditionalTd.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/vendor/autoload.php';
 //The objects of this class are used generating additional icon td-s, in the city representation table of the given country
 class Cities implements AdditionalTd {
     //The variable incapsulates coloumn count, which should be add to a given table

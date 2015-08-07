@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 
 <?php 
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/vendor/autoload.php';
 session_start();
 
   if(empty($_SESSION['userName'])){

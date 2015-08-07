@@ -12,6 +12,10 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        //$log = new Monolog\Logger('name');
+        //$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
+        //$log->addWarning('Foo');
+        require_once $_SERVER['DOCUMENT_ROOT'].'/world/vendor/autoload.php';
         session_start();
         if(!(empty($_POST['userName'])||empty($_POST['password']))){
         $_SESSION['userName']=$_POST['userName'];

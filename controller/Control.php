@@ -1,9 +1,9 @@
 <?php
- require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/db/ConnectDB.php';
- require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/GenerateHTML.php';
- require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/JSONFormat.php';
- require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/ProjectGlobals.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/db/ConnectDB.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/GenerateHTML.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/formatter/JSONFormat.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/controller/ProjectGlobals.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/vendor/autoload.php';
 //This class is a container of methods which are called from view folders
 class Control {
     

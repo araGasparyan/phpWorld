@@ -1,6 +1,6 @@
 <?php
- require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/validation/Matchers.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/model/validation/Matchers.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/world/vendor/autoload.php';
 
 //The objects of the class are used for connecting to the mysql database, and for queris
 class ConnectDB {
